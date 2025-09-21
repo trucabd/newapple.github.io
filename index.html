@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Page style Apple — tout-en-un</title>
+<title>Apple Style — Ultra Optimisé</title>
 <style>
 :root {
   --bg: #000;
   --fg: #f5f5f7;
   --muted: #8e8e93;
-  --light: #ffffff;
-  --dark: #000000;
+  --light: #fff;
+  --dark: #000;
   --accent: #0071e3;
   --maxw: 1200px;
   --radius: 18px;
@@ -26,27 +26,53 @@ body{
 }
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
+
+/* HEADER */
 .site-header{
   position:sticky;top:0;z-index:1000;
   backdrop-filter:saturate(120%) blur(14px);
   background:rgba(0,0,0,0.5);
   border-bottom:1px solid var(--border);
+  transition:all .3s ease;
+}
+.site-header.scrolled{
+  background:rgba(0,0,0,0.85);
+  padding:4px 0;
 }
 .nav{
   max-width:var(--maxw);margin:0 auto;
   display:grid;grid-template-columns:auto 1fr auto;
   align-items:center;gap:12px;padding:10px var(--pad);
 }
-.logo{font-size:20px}
+.logo{font-size:20px;transition:transform .3s ease}
+.logo:hover{transform:scale(1.15)}
 .nav-links{display:flex;gap:18px;justify-content:center}
-.nav-links a{font-size:14px;opacity:0.9;transition:opacity .2s}
+.nav-links a{
+  font-size:14px;opacity:0.9;position:relative;
+  transition:opacity .2s ease;
+}
 .nav-links a:hover{opacity:1}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-4px;
+  width:100%;height:2px;background:var(--accent);
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .3s ease;
+}
+.nav-links a:hover::after{
+  transform:scaleX(1);transform-origin:left;
+}
 .nav-actions{display:flex;gap:8px;align-items:center}
 .icon-btn,.hamburger{
   background:transparent;border:none;color:var(--fg);
   font-size:16px;cursor:pointer;padding:6px 8px;border-radius:8px;
+  transition:transform .2s ease, background .2s ease;
 }
-.icon-btn:hover,.hamburger:hover{background:rgba(255,255,255,0.06)}
+.icon-btn:hover,.hamburger:hover{
+  background:rgba(255,255,255,0.06);
+  transform:scale(1.15);
+}
+
+/* HERO */
 .hero{
   display:grid;grid-template-columns:1.05fr 0.95fr;
   gap:32px;max-width:var(--maxw);margin:48px auto;
@@ -60,12 +86,12 @@ img{max-width:100%;display:block}
 .cta{display:flex;gap:16px;flex-wrap:wrap}
 .btn{
   display:inline-block;padding:10px 16px;border-radius:999px;
-  font-weight:500;font-size:14px;transition:all .3s ease;
+  font-weight:500;font-size:14px;transition:transform .2s ease, background .3s ease;
 }
 .btn--dark{background:#111;color:#fff}
-.btn--dark:hover{background:#000}
-.link{color:var(--accent);font-weight:500}
-.link:hover{text-decoration:underline}
+.btn--dark:hover{background:#000;transform:scale(1.08)}
+.link{color:var(--accent);font-weight:500;transition:color .3s ease}
+.link:hover{color:#004a99;text-decoration:underline}
 .hero-media{
   position:relative;height:clamp(240px,35vw,460px);
   border-radius:var(--radius);overflow:hidden;
@@ -79,23 +105,32 @@ img{max-width:100%;display:block}
   position:absolute;inset:0;width:100%;height:100%;
   object-fit:cover;transition:transform .4s ease;
 }
-.hero-media:hover img{transform:scale(1.03)}
+.hero-media:hover img{transform:scale(1.05)}
+
+/* GRID */
 .grid{
   max-width:var(--maxw);margin:48px auto;padding:0 var(--pad);
   display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
 }
 .card{
   background:#0c0c0c;border:1px solid var(--border);
-  border-radius:var(--radius);padding:18px;transition:transform .2s,box-shadow .2s;
+  border-radius:var(--radius);padding:18px;
+  transition:transform .3s ease, box-shadow .3s ease;
 }
-.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.card:hover{
+  transform:translateY(-5px) scale(1.02);
+  box-shadow:var(--shadow);
+}
 .card-media{
   height:160px;border-radius:14px;overflow:hidden;
   background:var(--card-image,linear-gradient(145deg,#1c1c1f,#0f0f12)) center/cover no-repeat;
-  margin-bottom:12px;
+  margin-bottom:12px;transition:transform .3s ease;
 }
+.card:hover .card-media{transform:scale(1.05)}
 .card h3{margin-bottom:6px;font-weight:600}
 .card p{color:var(--muted);margin-bottom:10px}
+
+/* FOOTER */
 .site-footer{
   background:#0b0b0b;border-top:1px solid var(--border);margin-top:64px;
 }
@@ -107,12 +142,14 @@ img{max-width:100%;display:block}
   display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
 }
 .footer-links .col h4{margin-bottom:8px;font-size:13px;color:#d0d0d0}
-.footer-links .col a{display:block;color:#bdbdbf;font-size:13px;padding:4px 0}
+.footer-links .col a{display:block;color:#bdbdbf;font-size:13px;padding:4px 0;transition:color .3s ease}
 .footer-links .col a:hover{color:#e5e5e7}
 .legal{
   display:flex;justify-content:space-between;align-items:center;
   color:#8a8a8e;font-size:12px;border-top:1px solid var(--border);
 }
+
+/* RESPONSIVE */
 @media(max-width:960px){
   .nav-links{display:none}
   .hero{grid-template-columns:1fr}
@@ -141,8 +178,9 @@ img{max-width:100%;display:block}
     </div>
   </div>
 </header>
+
 <main>
-  <!-- Hero iPhone -->
+      <!-- Hero iPhone -->
   <section class="hero hero--light">
     <div class="hero-content">
       <h2>iPhone 17 Pro</h2>
@@ -160,7 +198,8 @@ img{max-width:100%;display:block}
       </picture>
     </div>
   </section>
-    <!-- Hero MacBook -->
+
+  <!-- Hero MacBook -->
   <section class="hero hero--light">
     <div class="hero-content">
       <h2>MacBook Air M5</h2>
@@ -179,7 +218,7 @@ img{max-width:100%;display:block}
     </div>
   </section>
 
-  <!-- Grille de produits -->
+  <!-- Grille produits -->
   <section class="grid">
     <article class="card" style="--card-image:url('images/ipad.avif')">
       <div class="card-media"></div>
@@ -237,10 +276,11 @@ img{max-width:100%;display:block}
   </div>
 </footer>
 
-<!-- JS menu mobile -->
+<!-- JS : menu mobile + effet header -->
 <script>
 const button = document.querySelector('.hamburger');
 const nav = document.querySelector('.nav-links');
+const header = document.querySelector('.site-header');
 
 if (button && nav) {
   button.addEventListener('click', () => {
@@ -251,7 +291,6 @@ if (button && nav) {
     button.setAttribute('aria-expanded', (!open).toString());
   });
 
-  // Accessibilité: fermer le menu avec Échap
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       nav.style.display = 'none';
@@ -259,6 +298,15 @@ if (button && nav) {
     }
   });
 }
+
+// Effet header au scroll
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 10) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
 </script>
 </body>
 </html>
