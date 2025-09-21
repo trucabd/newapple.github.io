@@ -268,6 +268,21 @@
       .grid { grid-template-columns: 1fr; transform: translateX(5px);transition: all 0.3s ease;}
       .hero-media, .hero-media--light { height: 220px; transform: translateX(5px);transition: all 0.3s ease;}
     }
+      .arrow-btn {
+            display: inline-block;
+            font-size: 16px;
+            padding: 8px 16px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            
+        }
+        .arrow-btn:hover {
+            background-color: white;
+            transform: translateX(5px)}
   </style>
 </head>
 <body>
@@ -322,8 +337,10 @@
     <h2>MacBook Air M5</h2>
     <p>Léger comme l’air. Puissant comme jamais.</p>
     <div class="cta">
+    <div class="arrow-btn">
       <a class="btn btn--dark" href="#">Découvrir</a>
       <a class="link" href="#">Acheter</a>
+      </div>
     </div>
   </div>
 
