@@ -121,27 +121,26 @@
   transition: all 0.3s ease;
 }
 
-        .cta { 
-            display: flex; 
-            gap: 14px; 
-            align-items: center; 
-            
-            transition: all 0.3s ease;
- 
-           
-            font-size: 16px;
-            padding: 8px 16px;
-            background-color: black;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .cta {
+    display: flex;           /* bouton en ligne */
+    font-size: 16px;                  /* taille du texte */
+    padding: 10px 24px;               /* espace intérieur */
+    background-color: black;          /* fond noir */
+    color: white;                     /* texte blanc */
+    border: none;                     /* pas de bordure */
+    border-radius: 50px;              /* forme ovale */
+    cursor: pointer;                  /* curseur main */
+    text-align: center;               /* texte centré */
+    text-decoration: none;            /* pas de soulignement si lien */
+    transition: all 0.3s ease;        /* animation fluide */
 }
-        .cta:hover {
-            background-color: white;
-            transform: translateX(5px);
- }
+
+.cta:hover {
+    background-color: white;          /* fond blanc au survol */
+    color: black;                      /* texte noir au survol */
+    transform: translateX(5px);        /* petit décalage à droite */
+}
+
 
 .btn {
   display: inline-block; 
