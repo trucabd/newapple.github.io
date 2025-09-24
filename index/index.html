@@ -1,154 +1,312 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Page style Apple — tout-en-un</title>
-  <style>
-    :root {
-      --bg: #000;
-      --fg: #f5f5f7;
-      --muted: #8e8e93;
-      --light: #ffffff;
-      --dark: #000000;
-      --accent: #0071e3;
-      --maxw: 1200px;
-      --radius: 18px;
-      --pad: 24px;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Apple Style — Ultra Optimisé</title>
+<style>
+:root {
+  --bg: ;
+  --fg: black;
+  --muted: #8e8e93;
+  --light: black;
+  --dark: white;
+  --accent: #0071e3;
+  --maxw: 1200px;
+  --radius: 18px;
+  --pad: 24px;
+  --border: rgba(255,255,255,0.8);
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+  color:var(--fg);background:var(--bg);line-height:1.5;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
 
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      color: var(--fg);
-      background: var(--bg);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
+/* HEADER */
+.site-header{
+  position:sticky;top:0;z-index:1000;
+  backdrop-filter:saturate(120%) blur(14px);
+  background:rgba(0,0,0,0.5);
+  border-bottom:1px solid var(--border);
+  transition:all .3s ease;
+}
+.site-header.scrolled{
+  background:rgba(0,0,0,0.85);
+  padding:4px 0;
+}
+.nav{
+  max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:auto 1fr auto;
+  align-items:center;gap:12px;padding:10px var(--pad);
+}
+.logo{font-size:20px;transition:transform .3s ease}
+.logo:hover{transform:scale(1.15)}
+.nav-links{display:flex;gap:18px;justify-content:center}
+.nav-links a{
+  font-size:14px;opacity:0.9;position:relative;
+  transition:opacity .2s ease;
+}
+.nav-links a:hover{opacity:1}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-4px;
+  width:100%;height:2px;background:var(--accent);
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .3s ease;
+}
+.nav-links a:hover::after{
+  transform:scaleX(1);transform-origin:left;
+}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.icon-btn,.hamburger{
+  background:transparent;border:none;color:var(--fg);
+  font-size:16px;cursor:pointer;padding:6px 8px;border-radius:8px;
+  transition:transform .2s ease, background .2s ease;
+}
+.icon-btn:hover,.hamburger:hover{
+  background:rgba(255,255,255,0.06);
+  transform:scale(1.15);
+}
 
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 32px;
-      max-width: var(--maxw);
-      margin: 48px auto;
-      padding: 0 var(--pad);
-      align-items: center;
-    }
+/* HERO */
+.hero{
+  display:grid;grid-template-columns:1.05fr 0.95fr;
+  gap:32px;max-width:var(--maxw);margin:48px auto;
+  padding:0 var(--pad);align-items:center;
+}
+.hero--light{
+  color:#111;background:#f5f5f7;border-radius:var(--radius);padding:32px;
+}
+.hero-content h2{font-size:clamp(28px,4vw,52px);font-weight:600;margin-bottom:8px}
+.hero-content p{color:var(--muted);font-size:18px;margin-bottom:16px}
+.cta{display:flex;gap:16px;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:10px 16px;border-radius:999px;
+  font-weight:500;font-size:14px;transition:transform .2s ease, background .3s ease;
+}
+.btn--dark{background:white;color:#fff}
+.btn--dark:hover{background:white;transform:scale(1.08)}
+.link{color:var(--accent);font-weight:500;transition:color .3s ease}
+.link:hover{color:#004a99;text-decoration:underline}
+.hero-media{
+  position:relative;height:clamp(240px,35vw,460px);
+  border-radius:var(--radius);overflow:hidden;
+  background:radial-gradient(60% 80% at 60% 50%,white 0%,white 70%);
+  box-shadow:var(--shadow);
+}
+.hero--light .hero-media{
+  background:radial-gradient(60% 80% at 60% 50%,#eaeaf0 0%,#d9d9e3 70%);
+}
+.hero-media img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;transition:transform .4s ease;
+}
+.hero-media:hover img{transform:scale(1.05)}
 
-    .hero--dark { 
-      color: var(--fg); 
-    }
+/* GRID */
+.grid{
+  max-width:var(--maxw);margin:48px auto;padding:0 var(--pad);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+}
+.card{
+  background:white;border:1px solid var(--border);
+  border-radius:var(--radius);padding:18px;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.card:hover{
+  transform:translateY(-5px) scale(1.02);
+  box-shadow:var(--shadow);
+}
+.card-media{
+  height:160px;border-radius:14px;overflow:hidden;
+  background:var(--card-image,linear-gradient(145deg,white,white)) center/cover no-repeat;
+  margin-bottom:12px;transition:transform .3s ease;
+}
+.card:hover .card-media{transform:scale(1.05)}
+.card h3{margin-bottom:6px;font-weight:600}
+.card p{color:var(--muted);margin-bottom:10px}
 
-    .hero--light {
-      color: #111;
-      background: #f5f5f7;
-      border-radius: var(--radius);
-      padding: 32px;
-    }
+/* FOOTER */
+.site-footer{
+  background:white;border-top:1px solid var(--border);margin-top:64px;
+}
+.footnotes,.footer-links,.legal{
+  max-width:var(--maxw);margin:0 auto;padding:16px var(--pad);
+}
+.footnotes p{color:var(--muted);font-size:12px}
+.footer-links{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+}
+.footer-links .col h4{margin-bottom:8px;font-size:13px;color:#d0d0d0}
+.footer-links .col a{display:block;color:#bdbdbf;font-size:13px;padding:4px 0;transition:color .3s ease}
+.footer-links .col a:hover{color:#e5e5e7}
+.legal{
+  display:flex;justify-content:space-between;align-items:center;
+  color:#8a8a8e;font-size:12px;border-top:1px solid var(--border);
+}
 
-    .hero-content h1, 
-    .hero-content h2 {
-      margin: 0 0 8px 0;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-content h1 { 
-      font-size: clamp(32px, 5vw, 64px); 
-      font-weight: 600; 
-    }
-
-    .hero-content h2 { 
-      font-size: clamp(28px, 4vw, 52px); 
-      font-weight: 600; 
-    }
-
-    .hero-content p { 
-      margin: 0 0 16px 0; 
-      color: var(--muted); 
-      font-size: 18px; 
-    }
-
-    .cta { 
-      display: flex; 
-      gap: 14px; 
-      align-items: center; 
-    }
-
-    .btn {
-      display: inline-block; 
-      padding: 10px 16px; 
-      border-radius: 999px;
-      text-decoration: none; 
-      font-weight: 500; 
-      font-size: 14px;
-    }
-
-    .btn--light { 
-      background: var(--light); 
-      color: #111; 
-    }
-
-    .btn--dark { 
-      background: #111; 
-      color: #fff; 
-    }
-
-    .link { 
-      color: var(--accent); 
-      text-decoration: none; 
-      font-weight: 500; 
-    }
-
-    .link:hover { 
-      text-decoration: underline; 
-    }
-
-    /* Zone média */
-    .hero-media, 
-    .hero-media--light {
-      position: relative;
-      height: clamp(220px, 35vw, 420px); 
-      border-radius: var(--radius);
-      background: radial-gradient(60% 80% at 60% 50%, #222 0%, #000 70%);
-      overflow: hidden;
-    }
-
-    .hero--light .hero-media--light {
-      background: radial-gradient(60% 80% at 60% 50%, #eaeaf0 0%, #d9d9e3 70%);
-    }
-
-    /* Image superposée et fixée */
-    .hero-media--light img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  </style>
+/* RESPONSIVE */
+@media(max-width:960px){
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .footer-links{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .grid{grid-template-columns:1fr}
+  .hero-media{height:220px}
+}
+</style>
 </head>
 <body>
+<header class="site-header">
+  <div class="nav">
+    <a class="logo" href="#" aria-label="Accueil"></a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#">Store</a><a href="#">Mac</a><a href="#">iPad</a>
+      <a href="iphone/index.html">iPhone</a><a href="#">Watch</a>
+      <a href="#">AirPods</a><a href="#">Support</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Rechercher">🔍</button>
+      <button class="icon-btn" aria-label="Panier">🛒</button>
+      <button class="hamburger" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
 
-  <section class="hero hero--dark">
+<main>
+      <!-- Hero iPhone -->
+  <section class="hero hero--light">
     <div class="hero-content">
-      <h1>iPhone 17 Pro</h1>
+      <h2>iPhone 17 Pro</h2>
       <p>Encore plus puissant. Encore plus pro.</p>
       <div class="cta">
-        <a class="btn btn--light" href="#">En savoir plus</a>
+        <a class="btn btn--dark" href="iphone/index.html">Découvrir</a>
+        <a class="link" href="iphone/index.html">Acheter</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <picture>
+        <source srcset="https://i.postimg.cc/1XCJd2B9/iphone.jpg" type="image/avif">
+        <source srcset="https://i.postimg.cc/1XCJd2B9/iphone.jpg" type="image/webp">
+        <img src="https://i.postimg.cc/1XCJd2B9/iphone.jpg" alt="iPhone 17 Pro" loading="lazy" decoding="async">
+      </picture>
+    </div>
+  </section>
+
+  <!-- Hero MacBook -->
+  <section class="hero hero--light">
+    <div class="hero-content">
+      <h2>MacBook Air M5</h2>
+      <p>Léger comme l’air. Puissant comme jamais.</p>
+      <div class="cta">
+        <a class="btn btn--dark" href="#">Découvrir</a>
         <a class="link" href="#">Acheter</a>
       </div>
     </div>
-
-    <!-- Bloc image à droite -->
-    <div class="hero-media hero-media--light" role="img" aria-label="Visuel Iphone 17 Pro">
-      <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-og-202409?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1737816778122" alt="iPhone 17 Pro">
-    
-  </div>
+    <div class="hero-media">
+      <picture>
+        <source srcset="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/macbook-air-og-202503?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1739216814915" type="image/avif">
+        <source srcset="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/macbook-air-og-202503?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1739216814915" type="image/webp">
+        <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/macbook-air-og-202503?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1739216814915" alt="MacBook Air M5" loading="lazy" decoding="async">
+      </picture>
+    </div>
   </section>
 
+  <!-- Grille produits -->
+  <section class="grid">
+    <article class="card" style="--card-image:url('images/ipad.avif')">
+      <div class="card-media"></div>
+      <h3>iPad</h3>
+      <p>Polyvalent. Intuitif. Créatif.</p>
+      <a class="link" href="#">Voir plus</a>
+    </article>
+    <article class="card" style="--card-image:url('images/watch.avif')">
+      <div class="card-media"></div>
+      <h3>Apple Watch</h3>
+      <p>La santé au poignet.</p>
+      <a class="link" href="#">Voir plus</a>
+    </article>
+    <article class="card" style="--card-image:url('images/airpods.avif')">
+      <div class="card-media"></div>
+      <h3>AirPods</h3>
+      <p>Son immersif. Connexion magique.</p>
+      <a class="link" href="#">Voir plus</a>
+    </article>
+    <article class="card" style="--card-image:url('images/services.avif')">
+      <div class="card-media"></div>
+      <h3>Services</h3>
+      <p>Musique, TV+, Arcade et plus.</p>
+      <a class="link" href="#">Voir plus</a>
+    </article>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <section class="footnotes">
+    <p>Contenu de démonstration. Remplacez par vos propres textes et images.</p>
+  </section>
+  <section class="footer-links">
+    <div class="col">
+      <h4>Shop et apprendre</h4>
+      <a href="#">Store</a><a href="#">Mac</a><a href="#">iPad</a><a href="#">iPhone</a>
+    </div>
+    <div class="col">
+      <h4>Services</h4>
+      <a href="#">Musique</a><a href="#">TV+</a><a href="#">Arcade</a><a href="#">iCloud</a>
+    </div>
+    <div class="col">
+      <h4>Compte</h4>
+      <a href="#">Gérer</a><a href="#">Réglages</a>
+    </div>
+    <div class="col">
+      <h4>À propos</h4>
+      <a href="#">Newsroom</a><a href="#">Investisseurs</a>
+    </div>
+  </section>
+  <div class="legal">
+    <p>© 2025 Votre Marque. Mentions légales · Confidentialité · Plan du site</p>
+    <div class="locale">France | FR</div>
+  </div>
+</footer>
+
+<!-- JS : menu mobile + effet header -->
+<script>
+const button = document.querySelector('.hamburger');
+const nav = document.querySelector('.nav-links');
+const header = document.querySelector('.site-header');
+
+if (button && nav) {
+  button.addEventListener('click', () => {
+    const open = getComputedStyle(nav).display !== 'none';
+    nav.style.display = open ? 'none' : 'flex';
+    nav.style.flexDirection = 'column';
+    nav.style.gap = '12px';
+    button.setAttribute('aria-expanded', (!open).toString());
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      nav.style.display = 'none';
+      button.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+// Effet header au scroll
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 10) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+</script>
 </body>
 </html>
