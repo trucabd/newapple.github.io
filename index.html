@@ -186,8 +186,8 @@ img{max-width:100%;display:block}
       <h2>iPhone 17 Pro </h2>
       <p>Encore plus puissant. Encore plus pro.</p>
       <div class="cta">
-        <a class="btn btn--dark" href="">Découvrir</a>
-        <a class="link" href="">Acheter</a>
+        <a class="btn btn--dark" href="iphone/index.html">Découvrir</a>
+        <a class="link" href="iphone/index.html">Acheter</a>
       </div>
     </div>
     <div class="hero-media">
@@ -199,7 +199,114 @@ img{max-width:100%;display:block}
     </div>
   </section>
 
-  
+  <!-- Hero MacBook -->
+  <section class="hero hero--light">
+    <div class="hero-content">
+      <h2>MacBook Air M5</h2>
+      <p>Léger comme l’air. Puissant comme jamais.</p>
+      <div class="cta">
+        <a class="btn btn--dark" href="#">Découvrir</a>
+        <a class="link" href="#">Acheter</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <picture>
+        <source srcset="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/macbook-air-og-202503?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1739216814915" type="image/avif">
+        <source srcset="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/macbook-air-og-202503?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1739216814915" type="image/webp">
+        <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/macbook-air-og-202503?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1739216814915" alt="MacBook Air M5" loading="lazy" decoding="async">
+      </picture>
+    </div>
+  </section>
+
+  <!-- Grille produits -->
+  <section class="grid">
+    <article class="card" style="--card-image:url('images/ipad.avif')">
+      <div class="card-media"></div>
+      <h3>iPad</h3>
+      <p>Polyvalent. Intuitif. Créatif.</p>
+      <a class="link" href="#">Voir plus</a>
+    </article>
+    <article class="card" style="--card-image:url('images/watch.avif')">
+      <div class="card-media"></div>
+      <h3>Apple Watch</h3>
+      <p>La santé au poignet.</p>
+      <a class="link" href="#">Voir plus</a>
+    </article>
+    <article class="card" style="--card-image:url('images/airpods.avif')">
+      <div class="card-media"></div>
+      <h3>AirPods</h3>
+      <p>Son immersif. Connexion magique.</p>
+      <a class="link" href="#">Voir plus</a>
+    </article>
+    <article class="card" style="--card-image:url('images/services.avif')">
+      <div class="card-media"></div>
+      <h3>Services</h3>
+      <p>Musique, TV+, Arcade et plus.</p>
+      <a class="link" href="#">Voir plus</a>
+    </article>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <section class="footnotes">
+    <p>Contenu de démonstration. Remplacez par vos propres textes et images.</p>
+  </section>
+  <section class="footer-links">
+    <div class="col">
+      <h4>Shop et apprendre</h4>
+      <a href="#">Store</a><a href="#">Mac</a><a href="#">iPad</a><a href="#">iPhone</a>
+    </div>
+    <div class="col">
+      <h4>Services</h4>
+      <a href="#">Musique</a><a href="#">TV+</a><a href="#">Arcade</a><a href="#">iCloud</a>
+    </div>
+    <div class="col">
+      <h4>Compte</h4>
+      <a href="#">Gérer</a><a href="#">Réglages</a>
+    </div>
+    <div class="col">
+      <h4>À propos</h4>
+      <a href="#">Newsroom</a><a href="#">Investisseurs</a>
+    </div>
+  </section>
+  <div class="legal">
+    <p>© 2025 Apple. Mentions légales · Confidentialité · Plan du site</p>
+    <div class="locale">France | FR</div>
+  </div>
+</footer>
+
+<!-- JS : menu mobile + effet header -->
+<script>
+const button = document.querySelector('.hamburger');
+const nav = document.querySelector('.nav-links');
+const header = document.querySelector('.site-header');
+
+if (button && nav) {
+  button.addEventListener('click', () => {
+    const open = getComputedStyle(nav).display !== 'none';
+    nav.style.display = open ? 'none' : 'flex';
+    nav.style.flexDirection = 'column';
+    nav.style.gap = '12px';
+    button.setAttribute('aria-expanded', (!open).toString());
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      nav.style.display = 'none';
+      button.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+// Effet header au scroll
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 10) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
 </script>
 </body>
 </html>
