@@ -108,16 +108,10 @@ img{max-width:100%;display:block}
 .hero-media:hover img{transform:scale(1.05)}
 
 /* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  gap: 38px;
-  max-width: var(--maxw);
-  margin: 48px auto;
-  padding: 0 var(--pad);
+.grid{
+  max-width:var(--maxw);margin:48px auto;padding:0 var(--pad);
+  display:grid;grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));gap:38px;
 }
-
-
 .card{
   background:grey;border:1px solid var(--border);
   border-radius:var(--radius);padding:38px;
